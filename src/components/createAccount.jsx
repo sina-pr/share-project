@@ -21,15 +21,12 @@ class createAccount extends Component {
   };
   sendHandler = (e) => {
     e.preventDefault();
-    var actionCodeSettings = {
-      url: "http://localhost:3000/",
-      handleCodeInApp: true,
-    };
     myAuth
-      .sendSignInLinkToEmail(this.state.Email, actionCodeSettings)
+      .createUserWithEmailAndPassword(this.state.Email, this.state.Password)
       .then(() => {
-        alert("done");
-      });
+        alert("done!");
+      })
+      .catch((err) => alert(err));
   };
   render() {
     return (
